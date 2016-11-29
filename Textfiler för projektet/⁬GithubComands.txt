@@ -1,4 +1,4 @@
-Vårat projekt : https://github.com/maxfiedler94/yatzy
+Vårat projekt : https://github.com/maxfiedler94/yatzyCube5
 Mac.github.com = Mac download
 Windows.github.com = windows download
 ---------------------------------------------------------------------------------------------------------Kommandon :
