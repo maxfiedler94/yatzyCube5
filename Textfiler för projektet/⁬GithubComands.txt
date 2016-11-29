@@ -1,0 +1,32 @@
+Vårat projekt : https://github.com/maxfiedler94/yatzy
+Mac.github.com = Mac download
+Windows.github.com = windows download
+---------------------------------------------------------------------------------------------------------Kommandon :
+
+cd = Current directory, ser vilken mapp man är i
+
+cd.. = går bak en mapp
+
+ls(Mac) dir (Win) = List, eller directory, visar alla filer/mappar I mappen
+
+git clone = Skapar repository(projekt) ifrån sidan till en mapp på datorn
+
+git status = Kikar vad som är skillnaden mellan projektmappen vi använder på våran dator och det som ligger uppe på github
+
+git add <filnamn> = Lägger till vald fil till projektet
+
+git commit (-m (lägger till ett meddelande)) =  Låser in det i projektet
+
+git push = Lägger upp det på github
+
+git pull = Tar ner senaste versionen av projektet
+:wq = Ta dig ur en commit
+
+Workflow
+Börja med git pull, för att få den senaste versionen utifall att något har blivit implementerat eller ändrat.
+Försök pusha varenda halvtimme om möjligt, förutsatt att det finns en anledning till det. Kör (git commit) ” -m ” för att skriva vad du har gjort för ändringar/implementationer.
+ Knasar det i koden så ändra det manuellt och prata med han som gjorde ändringen, förutsatt att det är samma kodrader, ser du fel är det bara att ändra det manuellt hur som helst när du gör en pull.
+
+
+
+Gitignore neatbeans, eclipse.
