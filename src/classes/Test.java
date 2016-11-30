@@ -1,14 +1,13 @@
 package classes;
 
+import java.awt.Window;
+import java.awt.*;
+
+
+import javax.swing.JOptionPane;
+
+
 public class Test {
-
-	public static void main(String[] args) {
-		System.out.println("aaa hej hej hej hej hej");
-		
-		System.out.println("mmMmmmM");
-		
-		
-		System.out.println("gdfe");
-	}
-
+	
+	
 }
