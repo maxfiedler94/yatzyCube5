@@ -1,16 +1,19 @@
-package classes;
+package com.jensen.model;
+
 
 import java.util.*;
 
 public class Dice {
 	private int dice;
 	private Random ran;
+
 	
 	
 	
 	public Dice()
 	{
 		dice = rollDice();
+		
 	}
 	
 	public int rollDice()
@@ -26,5 +29,7 @@ public class Dice {
 	{
 		return dice;
 	}
+	
+
 
 }
