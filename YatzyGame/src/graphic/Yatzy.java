@@ -88,7 +88,7 @@ public class Yatzy implements MouseListener
 	private JTable table;
 	private JScrollPane scrollPane;
 	private JPanel panel;
-	private JCheckBox checkBox;
+	private JTextField textField;
 	//private GameBoardG gBoard = new GameBoardG();
 	
 	
@@ -616,29 +616,10 @@ public class Yatzy implements MouseListener
 		panelYatzy.add(background);
 		
 		panel = new JPanel();
-		frame.getContentPane().add(panel, "name_99483811203214");
+		frame.getContentPane().add(panel, "name_148599686377348");
 		panel.setLayout(null);
 		
-		checkBox = new JCheckBox("");
-		checkBox.setBackground(Color.BLACK);
-		checkBox.setBounds(196, 168, 25, 25);
-		panel.add(checkBox);
 		
-		JCheckBox checkBox2 = new JCheckBox("");
-		checkBox2.setBounds(196, 271, 25, 25);
-		panel.add(checkBox2);
-		
-		JCheckBox checkBox3 = new JCheckBox("");
-		checkBox3.setBounds(196, 395, 25, 25);
-		panel.add(checkBox3);
-		
-		JCheckBox checkBox4 = new JCheckBox("");
-		checkBox4.setBounds(196, 513, 25, 25);
-		panel.add(checkBox4);
-		
-		JCheckBox checkBox5 = new JCheckBox("");
-		checkBox5.setBounds(196, 625, 25, 25);
-		panel.add(checkBox5);
 		
 	
 	

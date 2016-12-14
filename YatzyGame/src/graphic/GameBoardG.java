@@ -19,6 +19,8 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
+import javax.swing.JTextField;
+import javax.swing.SwingConstants;
 import javax.swing.table.DefaultTableModel;
 
 import com.jensen.model.Dice;
@@ -46,8 +48,10 @@ public class GameBoardG implements MouseListener
 	private JButton dice5Button;
 	private JTable table;
 	private JFrame devFrame;
+	private JTextField textField;
 	private String[] playerName;
 	private JPanel panel;
+	private String getCurrentPlayer = "";
 	//private JScrollPane scrollPane;
 	//private String player1, player2;
 	private JCheckBox checkBox,checkBox2,checkBox3,checkBox4,checkBox5;
@@ -192,6 +196,8 @@ public class GameBoardG implements MouseListener
 					if(currentPlayer == playerCount)
 					{
 						currentPlayer = playerCount;
+						
+						
 						break;
 					}
 				}
@@ -201,7 +207,15 @@ public class GameBoardG implements MouseListener
 			}
 		});
 		createBoard();
-		 
+		textField = new JTextField();
+		textField.setHorizontalAlignment(SwingConstants.CENTER);
+		textField.setFont(new Font("GAMECUBEN", Font.PLAIN, 18));
+		textField.setForeground(new Color(0, 0, 255));
+		textField.setBackground(Color.BLACK);
+		textField.setEnabled(false);
+		textField.setBounds(480, 510, 350, 58);
+		panelGame.add(textField);
+		textField.setColumns(10); 
 		panel = new JPanel();
 		JPanel panel1 = new JPanel();
 		JPanel panel2 = new JPanel();
@@ -321,6 +335,10 @@ public class GameBoardG implements MouseListener
 		});
 		
 		
+		
+		getCurrentPlayer = playerName[0]+"'S TURN"; 
+		textField.setText(getCurrentPlayer);
+		
 		JButton infoButton = new JButton("");
 		infoButton.setBorderPainted(false);
 		infoButton.setPressedIcon(new ImageIcon("Resourses/infoClick.jpg"));
@@ -343,17 +361,7 @@ public class GameBoardG implements MouseListener
 				
 			}
 		});
-		
-		
-		/*table = new JTable();
-		table.setGridColor(Color.BLACK);
-		
-		table.setRowHeight(25);
-		table.setCellSelectionEnabled(true);
-		table.setPreferredScrollableViewportSize(new Dimension(850, 800));
-		table.setComponentOrientation(ComponentOrientation.LEFT_TO_RIGHT);
-		table.setFont(new Font("OCR A Extended", Font.PLAIN, 15));*/
-		
+
 		tableModel = new DefaultTableModel(data1,col);
 		table = new JTable(tableModel);
 		table.setCellSelectionEnabled(false);
@@ -365,14 +373,16 @@ public class GameBoardG implements MouseListener
 		table.setFont(new Font("OCR A Extended", Font.PLAIN, 15));
 		table.setModel(tableModel);
 		table.setEnabled(false);
+		String temValue = "?";
+		for(int i = 1; i <= playerAmount; i++)
+		{
+			table.setValueAt(temValue, 6, i);
+			table.setValueAt(temValue, 7, i);
+			table.setValueAt(temValue, 17, i);
+			table.setValueAt(temValue, 18, i);
+		}
 		
-		/*panel2.setBackground(Color.DARK_GRAY);
-		panel2.setOpaque(true);
-		panel2.add(checkBox);
-		panel2.add(checkBox2);
-		panel2.add(checkBox3);
-		panel2.add(checkBox4);
-		panel2.add(checkBox5);*/
+		
 		
 		JScrollPane scrollPane = new JScrollPane(table);
 		panel1.setFont(new Font("OCR A Extended", Font.PLAIN, 15));
@@ -549,25 +559,28 @@ public class GameBoardG implements MouseListener
 					diceArray[i] = new Dice();
 					resetDice(i);
 				}
+				if(playerCount == playerAmount)
+				{
+					playerCount = 0;
+				}
+				playerCount++;
 				
 				rollButton.setEnabled(true);
 				
-				
+				getCurrentPlayer = playerName[playerCount-1]+"'S TURN"; 
+				textField.setText(getCurrentPlayer);
 				
 				table.setEnabled(false);
+				
 			}
 			
-			if(playerCount == playerAmount)
-			{
-				playerCount = 0;
-			}
-			playerCount++;
+			
+			
 			//table.setValueAt(value, getTableRow, 1);
 			int upperScore = 0;
 			int bonusPoint = 0;
 			if(!isRowEmpty(0) && !isRowEmpty(1) && !isRowEmpty(2) && !isRowEmpty(3) && !isRowEmpty(4) && !isRowEmpty(5))
 			{
-				
 				upperScore = getUpperScore();
 				table.setValueAt(upperScore, 6, currentPlayer);
 				if(upperScore >= 63)
