@@ -119,6 +119,7 @@ public class GameBoardG implements MouseListener
 		panelGame.setLayout(null);
 		
 		rollButton.setPressedIcon(new ImageIcon("Resourses/RollClick.jpg"));
+		rollButton.setCursor(Cursor.getPredefinedCursor(Cursor.HAND_CURSOR));
 		rollButton.setFocusPainted(false);
 		rollButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
@@ -177,18 +178,17 @@ public class GameBoardG implements MouseListener
 					}
 					
 					table.setEnabled(true);
-					if(counter == 2)
-					{
-						rollButton.setEnabled(false);
-					}
-					else
-					{
-						
-						counter++;
-					}
+					
+					
 					printOutDiceValueHolder();
 					
 				}
+				
+				if(counter == 2)
+				{
+					rollButton.setEnabled(false);
+				}	
+				counter++;
 				
 				//byter spelare
 				for(currentPlayer = 1; currentPlayer <= playerAmount; currentPlayer++ )
@@ -358,7 +358,9 @@ public class GameBoardG implements MouseListener
 		{
 			public void actionPerformed(ActionEvent e) 
 			{
-				
+				Yatzy choose = new Yatzy();
+				choose.getPanelChoose().setVisible(true);
+				panelGame.setVisible(false);
 			}
 		});
 
@@ -423,9 +425,9 @@ public class GameBoardG implements MouseListener
 		data1[9][0] = "Two Pair";
 		data1[10][0] = "Three Of Kind";
 		data1[11][0] = "Four Of Kind";
-		data1[12][0] = "Full House[25]";
-		data1[13][0] = "Small Str[15]";
-		data1[14][0] = "Large Str[20]";
+		data1[12][0] = "Full House";
+		data1[13][0] = "Small Straight[15]";
+		data1[14][0] = "Large Straight[20]";
 		data1[15][0] = "Chance";
 		data1[16][0] = "Yahtzee[50]";
 		data1[17][0] = "Lower Score";
@@ -436,8 +438,7 @@ public class GameBoardG implements MouseListener
 			for(int j = 1; j<=playerAmount;j++)
 			{
 				data1[i][j] = "";
-				
-				//System.out.println("Hej");
+			
 			}
 		}
 		
@@ -597,18 +598,47 @@ public class GameBoardG implements MouseListener
 			
 			
 			int lowerScore = 0;
-			if(!isRowEmpty(8) && !isRowEmpty(9) && !isRowEmpty(10) && !isRowEmpty(11) && !isRowEmpty(12) && !isRowEmpty(13) && !isRowEmpty(14)&&!isRowEmpty(15))
+			if(!isRowEmpty(8) && !isRowEmpty(9) && !isRowEmpty(10) && !isRowEmpty(11) && !isRowEmpty(12) && !isRowEmpty(13) && !isRowEmpty(14)&&!isRowEmpty(15)&&!isRowEmpty(16))
 			{
 				lowerScore = getLowerScore();
-				table.setValueAt(lowerScore, 16, currentPlayer);
+				table.setValueAt(lowerScore, 17, currentPlayer);
 			}
 			
-			
-			if(!isRowEmpty(0) && !isRowEmpty(1) && !isRowEmpty(2) && !isRowEmpty(3) && !isRowEmpty(4) && !isRowEmpty(5) && !isRowEmpty(8) && !isRowEmpty(9) && !isRowEmpty(10) && !isRowEmpty(11) && !isRowEmpty(12) && !isRowEmpty(13) && !isRowEmpty(14)&&!isRowEmpty(15))
+			int playerTableCounter = 0;
+			if(!isRowEmpty(0) && !isRowEmpty(1) && !isRowEmpty(2) && !isRowEmpty(3) && !isRowEmpty(4) && !isRowEmpty(5) && !isRowEmpty(8) && !isRowEmpty(9) && !isRowEmpty(10) && !isRowEmpty(11) && !isRowEmpty(12) && !isRowEmpty(13) && !isRowEmpty(14) && !isRowEmpty(15) && !isRowEmpty(16))
 			{
 				int total = bonusPoint + lowerScore + upperScore;
-				table.setValueAt(total, 17, currentPlayer);
+				table.setValueAt(total, 18, currentPlayer);
 				
+				playerTableCounter++;
+				if(playerTableCounter == playerAmount)
+				{
+					if(playerAmount == 2)
+					{
+						int playerOnesTotalPoint = 0;
+						int playerTwosTotalPoint = 0;
+						String temp1 = "";
+						String temp2 = "";
+						
+						temp1 = table.getValueAt(18, 1).toString();
+						playerOnesTotalPoint = Integer.parseInt(temp1);
+						
+						temp2 = table.getValueAt(18, 2).toString();
+						playerTwosTotalPoint = Integer.parseInt(temp2);
+						
+						if(playerOnesTotalPoint < playerTwosTotalPoint)
+						{
+							textField.setText(playerName[0]+" is winner.");
+						}
+						else if(playerOnesTotalPoint == playerTwosTotalPoint)
+						{
+							textField.setText("It's a draw!");
+						}
+						else
+						{
+							textField.setText(playerName[1]+" is winner.");
+						}
+					}
 				/*SwingUtilities.updateComponentTreeUI(this);
 				this.invalidate();
 				this.validate();
@@ -624,13 +654,16 @@ public class GameBoardG implements MouseListener
 			
 			//table.removeRowSelectionInterval(getTableRow, 1);
 			
+			
+			//counter=0;*/
+			
+			
+			}
 			checkBox.setSelected(false);
 			checkBox2.setSelected(false);
 			checkBox3.setSelected(false);
 			checkBox4.setSelected(false);
 			checkBox5.setSelected(false);
-			//counter=0;*/
-			
 			counter = 0;
 		}
 		

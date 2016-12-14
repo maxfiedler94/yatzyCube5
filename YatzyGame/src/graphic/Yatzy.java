@@ -210,7 +210,7 @@ public class Yatzy implements MouseListener
 		frame.getContentPane().add(panelYatzy, "name_989956785704721");
 		panelYatzy.setLayout(null);
 		// välj antal spelare panel
-		JPanel panelChoose = new JPanel();
+		panelChoose = new JPanel();
 		frame.getContentPane().add(panelChoose, "name_989961417393328");
 		panelChoose.setLayout(null);
 		frame.setLocationRelativeTo(null);
@@ -394,11 +394,11 @@ public class Yatzy implements MouseListener
                 playerTwo4Players = EnterPlayer42.getText();
                 playerThree4Players = EnterPlayer43.getText();
                 playerFour4Players = EnterPlayer44.getText();
-                GameBoardG g4Board = new GameBoardG(playerOne4Players,playerTwo4Players,playerThree4Players, 
+                GameBoardG gBoard = new GameBoardG(playerOne4Players,playerTwo4Players,playerThree4Players, 
                 		playerFour4Players,amountOfplayer);
                 panelChoose.setVisible(false);
-				g4Board.iniGUI();
-				panelGame = g4Board.getPanelGame();
+				gBoard.iniGUI();
+				panelGame = gBoard.getPanelGame();
 				panelGame.setVisible(true);
               
 			}
@@ -626,7 +626,10 @@ public class Yatzy implements MouseListener
 	}
 	
 	
-	
+	public JPanel getPanelChoose()
+	{
+		return panelChoose;
+	}
 	
 	@Override
 	public void mouseClicked(MouseEvent arg0) {
