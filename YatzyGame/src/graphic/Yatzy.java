@@ -32,8 +32,7 @@ import java.awt.Cursor;
 import javax.swing.JCheckBox;
 /**
  * Yatzy class contains the startscreen
- * @author Max
- *
+ * 
  */
 
 public class Yatzy implements MouseListener
@@ -611,8 +610,10 @@ public class Yatzy implements MouseListener
 		
 		
 	
-		//Start knappen skickar användaren vidare till att välja antal spelare
 		JButton btnStartButton = new JButton("");
+		/**
+		 * The start button which takes you to the number of player choice
+		 */
 		btnStartButton.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent arg0) 

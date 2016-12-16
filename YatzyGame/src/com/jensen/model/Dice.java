@@ -40,6 +40,4 @@ public class Dice {
 		return dice;
 	}
 	
-
-
 }
