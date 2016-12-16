@@ -1,5 +1,4 @@
 package graphic;
-
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Cursor;
@@ -25,7 +24,11 @@ import javax.swing.table.DefaultTableModel;
 
 import com.jensen.model.Dice;
 import com.jensen.model.SetScoreByYahtzeeRules;
-
+/**
+ * 
+ * GboardG contains the gameboard and player
+ * 
+ */
 public class GameBoardG implements MouseListener
 {
 	private DefaultTableModel tableModel;
@@ -59,6 +62,7 @@ public class GameBoardG implements MouseListener
 	
 	/**
 	 * @wbp.parser.constructor
+	 * Constructor
 	 */
 	public GameBoardG()
 	{
@@ -70,18 +74,31 @@ public class GameBoardG implements MouseListener
 		panelGame = new JPanel();
 	}
 	
+	/**
+	 * The gameboard for 2 players
+	 * 
+	 * @param p1 Player one
+	 * @param p2 Player two
+	 * @param playerCount amount of players
+	 */
 	public GameBoardG(String p1, String p2, int playerCount) 
 	{
 		playerAmount = playerCount;
 		playerName = new String[playerAmount];
-		//player1 = p1;
-		//player2 = p2;
 		playerName[0] = p1;
 		playerName[1] = p2;
 		
 		panelGame = new JPanel();
 		
 	}
+	/**
+	 * The gameboard for 3 players
+	 * 
+	 * @param p1 Player one 
+	 * @param p2 Player two
+	 * @param p3 Player three
+	 * @param playerCount amount of players
+	 */
 	
 	public GameBoardG(String p1, String p2,String p3,int playerCount) 
 	{
@@ -94,6 +111,15 @@ public class GameBoardG implements MouseListener
 		
 	}
 	
+	/**
+	 * The gameboard for 4 players
+	 * @param p1 Player one
+	 * @param p2 Player two
+	 * @param p3 Player three
+	 * @param p4 Player four
+	 * @param playerCount amount of players
+	 */
+	
 	public GameBoardG(String p1, String p2,String p3,String p4,int playerCount) 
 	{
 		playerAmount = playerCount;
@@ -105,7 +131,9 @@ public class GameBoardG implements MouseListener
 		panelGame = new JPanel();
 		
 	}
-	
+	/**
+	 * Initializes the gameboard along with the graphics
+	 */
 	void iniGUI()
 	{
 		checkBox = new JCheckBox();
@@ -171,9 +199,6 @@ public class GameBoardG implements MouseListener
 							
 						}
 						diceArray[i] = new Dice();
-						/*value= diceArray[i].getDice();
-						diceButton[i].setIcon(new ImageIcon("Resourses/dice"+value+".jpg"));
-						diceValueHolder[i]= value;*/
 						rollButtonDice(i);
 					}
 					
@@ -400,13 +425,12 @@ public class GameBoardG implements MouseListener
 		Yatzy.frame.getContentPane().add(panelGame, "name_531936123301123");
 		//Yatzy.frame.getContentPane().add(panelGame);
 	}
-	
+	/**
+	 * Creates the gameboard
+	 */
 	private void createBoard() {
-		// TODO Auto-generated method stub
 		col = new String[playerAmount+1];
 		col[0]="Categories";
-		//col[1]= player1;
-		//col[2] =player2;
 		for(int y = 1; y <= playerAmount; y++)
 		{
 			col[y]= playerName[y-1];
@@ -458,10 +482,12 @@ public class GameBoardG implements MouseListener
 		
 	}
 
-	
+	/**
+	 * Creates dice object
+	 */
 	public void createAndRollDice()
 	{
-		//int counter=0;
+
 		for(int i = 0; i<diceArray.length;i++)
 		{
 			
@@ -472,10 +498,13 @@ public class GameBoardG implements MouseListener
 			panel.add(diceButton[i]);
 			
 		}
-		//printOutDiceValueHolder();
 		
 	}
 	
+	/**
+	 * The roll button
+	 * @param _value Value of the dice(button)
+	 */
 	void rollButtonDice(int _value)
 	{
 		value= diceArray[_value].rollDice();
@@ -483,21 +512,23 @@ public class GameBoardG implements MouseListener
 		diceButton[_value].setIcon(new ImageIcon("Resourses/dice"+value+".jpg"));
 		diceValueHolder[_value]= value;
 	}
-	
+	/**
+	 * Resets the dice after 3 rolls
+	 * @param _value Value of dice rolls
+	 */
 	void resetDice(int _value)
 	{
 		value= diceArray[_value].getDice();
-		//diceButton[_value].setText(String.valueOf(value));;
 		diceButton[_value].setIcon(new ImageIcon("Resourses/diceQ.jpg"));
 		
 		diceValueHolder[_value]= value;
 	}
 	
-	
-	
+	/**
+	 * Sets the score in the selected column inside the table
+	 */
 	public void mouseClicked(MouseEvent e) 
 	{
-		// TODO Auto-generated method stub
 		if(e.getSource()==table)
 		{
 			int value=0,getTableRow=0;
@@ -576,8 +607,6 @@ public class GameBoardG implements MouseListener
 			}
 			
 			
-			
-			//table.setValueAt(value, getTableRow, 1);
 			int upperScore = 0;
 			int bonusPoint = 0;
 			if(!isRowEmpty(0) && !isRowEmpty(1) && !isRowEmpty(2) && !isRowEmpty(3) && !isRowEmpty(4) && !isRowEmpty(5))
@@ -651,13 +680,6 @@ public class GameBoardG implements MouseListener
 	
 			
 			
-			
-			//table.removeRowSelectionInterval(getTableRow, 1);
-			
-			
-			//counter=0;*/
-			
-			
 			}
 			checkBox.setSelected(false);
 			checkBox2.setSelected(false);
@@ -667,12 +689,13 @@ public class GameBoardG implements MouseListener
 			counter = 0;
 		}
 		
-		
-		//System.out.println(getTableRow);
+
 	}
-	
+	/**
+	 * Calculates total lower table score
+	 * @return value of the score
+	 */
 	private int getLowerScore() {
-		// TODO Auto-generated method stub
 		int returnValue = 0,newValue = 0;
 		
 		String getValueAsString = "";
@@ -686,9 +709,15 @@ public class GameBoardG implements MouseListener
 		
 		return newValue;
 	}
-
+	
+	/**
+	 * Calculates total upper table score
+	 * @return value of the score
+	 */
+	
 	private int getUpperScore() {
-		// TODO Auto-generated method stub
+
+		
 		int returnValue = 0,newValue = 0;
 		
 		String getValueAsString = "";
@@ -702,6 +731,11 @@ public class GameBoardG implements MouseListener
 		
 		return newValue;
 	}
+	/**
+	 *  Checks if the row is empty
+	 * @param currentClickedRow Selects row with click 
+	 * @return if the row is taken or not
+	 */
 
 	boolean isRowEmpty(int currentClickedRow)
 	{
@@ -742,14 +776,5 @@ public class GameBoardG implements MouseListener
 	public void mouseReleased(MouseEvent arg0) {
 		// TODO Auto-generated method stub
 		
+	}	
 	}
-	
-
-
-		
-		
-		
-		
-	}
-
-

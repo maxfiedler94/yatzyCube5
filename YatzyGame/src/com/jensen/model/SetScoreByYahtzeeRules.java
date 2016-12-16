@@ -1,7 +1,10 @@
 package com.jensen.model;
 
 	import java.util.ArrayList;
-
+	/**
+	 * The SetScoreByYahtzeeRules class contains the calculations for the score.
+	 *
+	 */
 	public class SetScoreByYahtzeeRules {
 
 		private ArrayList<Integer> ones = new ArrayList<>();
@@ -11,7 +14,13 @@ package com.jensen.model;
 		private ArrayList<Integer> fives= new ArrayList<>();
 		private ArrayList<Integer> sixes = new ArrayList<>();
 		private int[] diceArr;
+		
 		private int selectedCategory;
+		/**
+		 * The method which sets the score
+		 * @param getDiceArray Gets the array with dices
+		 * @param category The category of the score
+		 */
 		public SetScoreByYahtzeeRules(int[] getDiceArray, int category) 
 		{
 			diceArr = new int[5];
@@ -51,7 +60,10 @@ package com.jensen.model;
 			}
 			
 		}
-		
+		/**
+		 * Method to set the upper score
+		 * @return returns the set value
+		 */
 		public int upperScoreSet()
 		{	
 			int setValue = 0;
@@ -202,7 +214,10 @@ package com.jensen.model;
 		}
 		*/
 		
-		
+		/**
+		 * Score calculation for pair
+		 * @return the value of the dice
+		 */
 		public int pair()
 		{
 			int returnScore = 0;
@@ -236,7 +251,10 @@ package com.jensen.model;
 
 			return returnScore;
 		}
-		
+		/**
+		 * Score calculation for two pair
+		 * @return the value of the dice
+		 */
 		public int twoPair()
 		{
 			int returnScore = 0;
@@ -294,6 +312,10 @@ package com.jensen.model;
 
 			return returnScore;
 		}
+		/**
+		 * Score calculation for three of a kind
+		 * @return the value of the dice
+		 */
 		
 		public int threeOfKind()
 		{
@@ -330,6 +352,10 @@ package com.jensen.model;
 		
 			return returnScore;
 		}
+		/**
+		 * Score calculation for four of a kind
+		 * @return the value of the dice
+		 */
 		
 		public int fourOfKind()
 		{
@@ -365,7 +391,10 @@ package com.jensen.model;
 		
 			return returnScore;
 		}
-		
+		/**
+		 * Score calculation for full house
+		 * @return the value of the dice
+		 */
 		public int fullHouse()
 		{
 			int returnScore=0;
@@ -379,6 +408,10 @@ package com.jensen.model;
 			
 			return returnScore;
 		}
+		/**
+		 * Score calculation for small straight
+		 * @return the value of the dice
+		 */
 		
 		public int smallStraight()
 		{
@@ -390,7 +423,10 @@ package com.jensen.model;
 			
 			return returnScore;
 		}
-		
+		/**
+		 * Score calculation for large straight
+		 * @return the value of the dice
+		 */
 		public int largeStraight()
 		{
 			int returnScore=0;
@@ -401,7 +437,10 @@ package com.jensen.model;
 			
 			return returnScore;
 		}
-		
+		/**
+		 * Score calculation for yahtzee
+		 * @return the value of the dice
+		 */
 		public int yahtzee()
 		{
 			int returnScore=0;
@@ -412,6 +451,10 @@ package com.jensen.model;
 			
 			return returnScore;
 		}
+		/**
+		 * Score calculation chance
+		 * @return the value of the dice
+		 */
 		
 		public int chance()
 		{
@@ -422,6 +465,10 @@ package com.jensen.model;
 			}
 			return returnScore;
 		}
+		/**
+		 * ????
+		 * @return
+		 */
 		
 		private boolean specialCatagory() {
 			// TODO Auto-generated method stub

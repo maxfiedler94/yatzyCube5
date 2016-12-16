@@ -5,7 +5,10 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 
 import graphic.Yatzy;
-
+/**
+ * MainFrame class contains the main method
+ *
+ */
 public class MainFrame
 {
 	public static void main(String[] args) 
@@ -13,6 +16,9 @@ public class MainFrame
 		
 		EventQueue.invokeLater(new Runnable() 
 		{
+			/**
+			 * Runs the game
+			 */
 			public void run() 
 			{
 				

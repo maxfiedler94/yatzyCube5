@@ -30,7 +30,11 @@ import AppPackage.AnimationClass;
 import java.awt.event.MouseAdapter;
 import java.awt.Cursor;
 import javax.swing.JCheckBox;
-
+/**
+ * Yatzy class contains the startscreen
+ * @author Max
+ *
+ */
 
 public class Yatzy implements MouseListener
 {
@@ -63,15 +67,7 @@ public class Yatzy implements MouseListener
     private static String playerThree4Players;
     private static String playerFour4Players;
     
-
-	/**
-	 * Launch the application.
-	 */
-	
-	
-	
-	
-	
+    
 	JButton btn3PlayerButton = new JButton("");
 	JButton btn4PlayerButton = new JButton("");
 	JButton btnPlay2Button = new JButton("");
@@ -89,11 +85,13 @@ public class Yatzy implements MouseListener
 	private JScrollPane scrollPane;
 	private JPanel panel;
 	private JTextField textField;
-	//private GameBoardG gBoard = new GameBoardG();
 	
 	
-	
-	//slidear ner player 3 och player 4 knappen när player 2 knappen är klickad
+	/**
+	 * Makes 3 player choice and 4 player choice slide down 
+	 * when 2 player choice is clicked
+	 * @param evt
+	 */
 	public void AnimationSlide(java.awt.event.ActionEvent evt)
 	{
 		AnimationClass slide = new AnimationClass();
@@ -105,7 +103,10 @@ public class Yatzy implements MouseListener
 		AnimationClass button3 = new AnimationClass();
 		button3.jButtonYDown(323, 373, 15, 2, btn3PlayerButton);
 	}
-	//slidear tillbaka player2 knappens textfields och player3 knappen till deras ursprungs plats
+	/**
+	 * Makes 2 player choice slide back 
+	 * @param evt
+	 */
 	public void AnimationSlideBack(java.awt.event.ActionEvent evt)
 	{
 		AnimationClass slideBack = new AnimationClass();
@@ -117,8 +118,10 @@ public class Yatzy implements MouseListener
 		AnimationClass buttonBack3 = new AnimationClass();
 		buttonBack3.jButtonYUp(373, 323, 5, 2, btn3PlayerButton);
 	}
-	
-	//slidear ner player3 knappens textfields och player 4 knappen
+	/**
+	 * Makes 3 player choice slide down
+	 * @param evt
+	 */
 	public void AnotherAnimationSlide(java.awt.event.ActionEvent evt)
 	{
 		AnimationClass slide3 = new AnimationClass();
@@ -133,7 +136,10 @@ public class Yatzy implements MouseListener
 		button4.jButtonYDown(409, 512, 6, 1, btn4PlayerButton);
 		
 	}
-	//slidear tillbaka player3 knappens textfields och player 4 knappen till deras ursprungs plats
+	/**
+	 * Makes 3 player choice slide back
+	 * @param evt
+	 */
 	public void AnotherAnimationSlideBack(java.awt.event.ActionEvent evt)
 	{
 		AnimationClass slideBack3 = new AnimationClass();
@@ -147,7 +153,10 @@ public class Yatzy implements MouseListener
 		AnimationClass button4Back = new AnimationClass();
 		button4Back.jButtonYUp(512, 409, 0, 1, btn4PlayerButton);
 	}	
-	//slidear ner player 4 knappens texfields
+	/**
+	 * Makes 4 player choice slide down
+	 * @param evt
+	 */
 	public void YetAnotherAnimationSlide(java.awt.event.ActionEvent evt)
 	{
 		AnimationClass slide6 = new AnimationClass();
@@ -161,7 +170,10 @@ public class Yatzy implements MouseListener
 		AnimationClass play4 = new AnimationClass();
 		play4.jButtonYDown(409, 594, 3, 1, btnPlay4Button);
 	}
-	
+	/**
+	 * Makes 4 player choice slide back
+	 * @param evt
+	 */
 	public void YetAnotherAnimationSlideBack(java.awt.event.ActionEvent evt)
 	{
 		AnimationClass slideBack6 = new AnimationClass();
@@ -185,15 +197,13 @@ public class Yatzy implements MouseListener
 	{
 		
 		initialize();
-		//gBoard.initGui();
 		
 	}
 	
 
 	/**
-	 * Initialize the contents of the frame.
+	 * Initializes the contents of the frame.
 	 */
-	//Spelets frame, dess storlek, kunna kryssa, layout och ikon
 	private void initialize() 
 	{
 		frame = new JFrame();
@@ -291,9 +301,12 @@ public class Yatzy implements MouseListener
 		btn3PlayerButton.setIcon(new ImageIcon("Resourses/3Players_Default.jpg"));
 		btn3PlayerButton.setBounds(442, 323, 285, 25);
 		panelChoose.add(btn3PlayerButton);
-		
-		//vad knapp 4 ska göra
 		btn4PlayerButton.setBorderPainted(false);
+		
+		/**
+		 * Shows the input for 4 players
+		 */
+		
 		btn4PlayerButton.addActionListener(new ActionListener() 
 		{
 			public void actionPerformed(ActionEvent e)
@@ -338,7 +351,11 @@ public class Yatzy implements MouseListener
 		btnPlay2Button.setBounds(508, 235, 143, 27);
 		panelChoose.add(btnPlay2Button);
 		btnPlay2Button.setVisible(false);
-		//vad play knapp till 2 players gör
+		
+		/**
+		 * Creates the gameboard for 2 players
+		 */
+		
 		btnPlay2Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) 
 			{
@@ -360,8 +377,12 @@ public class Yatzy implements MouseListener
                 
 			}
 		});
+		
+		/**
+		 * Creates the gameboard with 3 players
+		 */
+		
 		btnPlay3Button.addActionListener(new ActionListener() {
-			//vad play knappen till 3 players gör
 			public void actionPerformed(ActionEvent e) 
 			{
 				int amountOfplayer = 3;
@@ -385,7 +406,11 @@ public class Yatzy implements MouseListener
 		btnPlay3Button.setBounds(508, 323, 143, 27);
 		panelChoose.add(btnPlay3Button);
 		btnPlay3Button.setVisible(false);
-		//Skapar gameboard med 4 spelare
+		
+		/**
+		 * Creates gameboard with 4 players
+		 */
+		
 		btnPlay4Button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) 
 			{
